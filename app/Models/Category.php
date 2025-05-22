@@ -4,13 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Admin extends Model
+class Category extends Model
 {
-    protected $table = "admins";
+    protected $table = "categories";
     protected $primaryKey = "id";
     protected $fillable = [
-        "name",
-        "email",
-        "password"
+        "slug",
+        "name"
     ];
 }
