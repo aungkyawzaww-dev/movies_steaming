@@ -24,13 +24,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('category_movies', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger("movie_id")->index();
-            $table->unsignedBigInteger("category_id")->index();
-            $table->bigInteger("view_count");
-            $table->timestamps();
-        });
     }
 
     /**

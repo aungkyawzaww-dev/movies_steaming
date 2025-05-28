@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Movie extends Model
 {
+
+    protected $table = "movies";
+    protected $primaryKey = "id";
     protected $fillable = [
         "slug",
         "name",
@@ -13,6 +16,12 @@ class Movie extends Model
         "description",
         "embed_link",
         "rating",
-        "view_count"
+        "view_count",
+        "category_id",
     ];
+
+    public function category(){
+        return $this->belongsToMany(Category::class);
+    }
+
 }

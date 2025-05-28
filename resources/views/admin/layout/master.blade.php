@@ -239,6 +239,8 @@
         </script>
     @endif
 
+    @yield('js');
+
 </body>
 
 

@@ -1,1 +1,14 @@
 https://dbdiagram.io/d/movie-steaming-682eee9bb9f7446da3a9ac80
+
+
+
+=> react install 
+
+npm install vite 
+npm install laravel-vite-plugin 
+npm install @vitejs/plugin-react 
+npm install react-router-dom 
+npm install react-dom
+npm install react
+
+vite.config.js ထဲမှာ setting ချမယ်

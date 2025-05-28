@@ -9,27 +9,16 @@ use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        // $categories = Category::all();
-        // return view("admin.category.index",compact("categories"));
-        return "Hello I AM INDEX";
+        $categories = Category::orderBy("id", "desc")->withCount('movies')->paginate(10);        return view("admin.category.index",compact("categories"));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view("admin.category.create");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -42,40 +31,36 @@ class CategoryController extends Controller
         ]);
 
         $category->save();
-
         return redirect()->back()->with("success","Stored");
 
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view("admin.category.edit",compact("category"));
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->slug = Str::slug($request->name);
+        $category->name = $request->name;
+        $category->save();
+        return redirect(route('category.index'))->with('success','Update successfully');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return redirect()->back()->with("success","Delete successfully");
     }
 }
