@@ -222,7 +222,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-   
+
     {{-- validation error --}}
     @if($errors->any())
         @foreach($errors->all() as $err)

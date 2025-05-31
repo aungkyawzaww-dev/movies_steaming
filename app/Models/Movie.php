@@ -11,6 +11,7 @@ class Movie extends Model
     protected $primaryKey = "id";
     protected $fillable = [
         "slug",
+        "release_date",
         "name",
         "image",
         "description",

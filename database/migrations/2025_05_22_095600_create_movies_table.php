@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             // သူနဲ့ပတ်သတ်ပြီးရှာဖွေမူတွေများကြီးလုပ်နိုင်အောင် index ကိုထည့် 
             $table->string("slug")->index();
+            $table->string("release_date");
             $table->string("name")->index();
             $table->string("image");
             $table->longtext("description");

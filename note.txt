@@ -12,3 +12,10 @@ npm install react-dom
 npm install react
 
 vite.config.js ထဲမှာ setting ချမယ်
+
+
+https://api.themoviedb.org/3/movie/552524?api_key=d8e5a89ef4ad47d470effb335b141b87
+
+https://api.themoviedb.org/3/movie/950387?api_key=d8e5a89ef4ad47d470effb335b141b87
+
+https://api.themoviedb.org/3/movie/950387

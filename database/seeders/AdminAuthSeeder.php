@@ -24,3 +24,4 @@ class AdminAuthSeeder extends Seeder
 
 
 // php artisan db:seed
+// php artisan migrate fresh --seed
