@@ -19,5 +19,10 @@ Route::group(["middleware" => "RedirectIfNotAdminAuth"],function(){
     Route::get("logout",[AuthController::class,"logout"])->name("logout");
     Route::resource("admin/category",CategoryController::class);
     Route::resource("admin/movie",MoviesController::class);
-
 });
+
+// Route::group(['prefix'=>'api'],function(){
+// });
+
+Route::post('store-movie',[MoviesController::class,'store']);
+

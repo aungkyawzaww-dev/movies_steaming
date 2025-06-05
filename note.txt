@@ -19,3 +19,20 @@ https://api.themoviedb.org/3/movie/552524?api_key=d8e5a89ef4ad47d470effb335b141b
 https://api.themoviedb.org/3/movie/950387?api_key=d8e5a89ef4ad47d470effb335b141b87
 
 https://api.themoviedb.org/3/movie/950387
+
+
+=> Steamwish
+https://streamwish.com/
+
+=>streamwish api key 
+28105e5eeik1ijid6j2gs
+
+
+=> Links
+https://www.adspyglass.com/ (for ads)
+https://players.akamai.com/
+https://codepen.io/sampotts/pen/jARJYp
+
+
+=> https://react-select.com/
+
