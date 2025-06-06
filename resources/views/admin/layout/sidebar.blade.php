@@ -23,7 +23,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="{{ route('movie.index') }}">
                         <i class="ni ni-diamond text-primary sidenav-mini-icon"></i>
                         <span class="sidenav-normal">Movie</span>
                     </a>

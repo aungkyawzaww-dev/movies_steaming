@@ -17,11 +17,10 @@ class Movie extends Model
         "description",
         "embed_link",
         "rating",
-        "view_count",
-        "category_id",
+        "view_count"
     ];
 
-    public function category(){
+    public function categoryFun(){
         return $this->belongsToMany(Category::class);
     }
 

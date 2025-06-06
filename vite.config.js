@@ -20,7 +20,11 @@ import react from '@vitejs/plugin-react'; // important to put this here
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/js/Test.jsx','resources/js/Movie/CreateMovie.jsx'],
+            input: [
+                'resources/js/Test.jsx',
+                'resources/js/Movie/CreateMovie.jsx',
+                'resources/js/Movie/EditMovie.jsx',
+            ],
             refresh: true,
         }),
         react(),

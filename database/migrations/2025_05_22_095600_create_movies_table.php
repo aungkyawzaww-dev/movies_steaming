@@ -21,7 +21,7 @@ return new class extends Migration
             $table->longtext("description");
             $table->string("embed_link");
             $table->double("rating");
-            $table->bigInteger("view_count");
+            $table->bigInteger("view_count")->default(0);
             $table->timestamps();
         });
 

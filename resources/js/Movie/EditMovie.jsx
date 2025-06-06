@@ -5,26 +5,41 @@ import { ToastContainer, toast } from 'react-toastify';
 import ReactSelect from 'react-select'
 import BtnLoader from '../Components/BtnLoader';
 
+// blade_movie_category   blade_movie
+
+
 const categories = blade_movie_category.map( category => {
+    
     return {
         value: category.id,
         label: category.name
     }
 });
 
-const CreateMovie = () => {
+// console.log(selectCategoryIDs);
+const selectCategoryIDs = [];
+const selectCategory = blade_movie.category_fun.map( category => {
+    selectCategoryIDs.push(category.id);
+    return {
+        value: category.id,
+        label: category.name
+    }
+});
+
+
+const EditMovie = () => {
 
     const [loader,setLoader] = useState(false);
     const [directLink,setDirectLink] = useState('');
 
     const [data,setData] = useState({
-        embed_link:"",
-        name: "",
-        release_date: "",
-        rating:"",
-        image_url:"",
-        description:"",
-        category:[]
+        embed_link: blade_movie.embed_link,
+        name: blade_movie.name,
+        release_date: blade_movie.release_date,
+        rating: blade_movie.rating,
+        image_url: blade_movie.image,
+        description: blade_movie.description,
+        category:selectCategoryIDs
     });
 
     const changeTMDBIdHandler = (showid) => {
@@ -43,6 +58,8 @@ const CreateMovie = () => {
 
     }
 
+
+
     const uploadMovie = ()=>{
 
         if(directLink == ""){
@@ -54,22 +71,28 @@ const CreateMovie = () => {
         axios.get(api).then((res) => {
 
             const file_code = res.data.result.filecode;
+            // console.log(file_code);
             setData({
                 ...data,
                 embed_link : file_code
             });
+            // console.log(file_code);
+
         });
+
     }
 
-    const storeMovie = () => {
+    // { photo ? (<Image ="rounded-3xl" src={photo}height={30}  width={30} alt="Profile image" />) : (<p>No image</p>)}
+
+    const updateMovie = () => {
         setLoader(true);
-        axios.post("/store-movie",data).then((d) => {
+        axios.post("/update-movie/"+blade_movie.id,data).then((d) => {
             if(d.data == "success") {
-                toast.success("Movie Created");
-                setTimeout(()=>{
-                    location.reload();
-                },1000)
+                toast.success("Movie Updated");
             }
+            setTimeout(()=>{
+                setLoader(false);
+            },1000)
         })
         .catch((e)=>{
             setLoader(false);
@@ -95,6 +118,8 @@ const CreateMovie = () => {
         });
     }
 
+
+
   return (
     <div className='container-fluid'>
         <div className="row">
@@ -110,15 +135,6 @@ const CreateMovie = () => {
                     <input type="text" name='name' id='name' className='form-control' onChange={(e) => setData({...data,name:e.target.value})} value={data.name} />
                 </div>
 
-                <div className="form-group">
-                    <label htmlFor="release_date">Release Date</label>
-                    <input type="text" name='release_date' id='release_date' className='form-control' onChange={(e) => setData({...data,release_date:e.target.value})} value={data.release_date} />
-                </div>
-
-                <div className="form-group">
-                    <label htmlFor="rating">Enter Rating</label>
-                    <input type="text" name='rating' id='rating' className='form-control' onChange={(e) => setData({...data,rating:e.target.value})} value={data.rating}/>
-                </div>
 
                 <div className="form-group">
                     <label htmlFor="image_url">Enter Image URL</label>
@@ -148,18 +164,29 @@ const CreateMovie = () => {
                 </div>
 
                 <div className="form-group">
+                    <label htmlFor="release_date">Release Date</label>
+                    <input type="text" name='release_date' id='release_date' className='form-control' onChange={(e) => setData({...data,release_date:e.target.value})} value={data.release_date} />
+                </div>
+
+                <div className="form-group">
+                    <label htmlFor="rating">Enter Rating</label>
+                    <input type="text" name='rating' id='rating' className='form-control' onChange={(e) => setData({...data,rating:e.target.value})} value={data.rating}/>
+                </div>
+
+                <div className="form-group">
                     <label>Choose Category</label>
                     
                     <ReactSelect
                         isMulti= {true}
                         options={categories}
                         onChange = {(category) => changeCategory(category)}
+                        defaultValue = {selectCategory}
                     />
                 </div>
 
-                <button className='btn btn-primary d-flex justify-content-between align-items-center mb-2' disabled={loader} onClick={storeMovie}>
+                <button className='btn btn-primary d-flex justify-content-between align-items-center mb-2' disabled={loader} onClick={updateMovie}>
                     {loader && <BtnLoader/>}
-                    Create Movie
+                    Update Movie
                 </button>
 
             </div>
@@ -171,5 +198,5 @@ const CreateMovie = () => {
   )
 }
 
-createRoot(document.getElementById('root')).render(<CreateMovie/>);
+createRoot(document.getElementById('root')).render(<EditMovie/>);
 

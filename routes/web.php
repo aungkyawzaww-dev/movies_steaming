@@ -25,4 +25,5 @@ Route::group(["middleware" => "RedirectIfNotAdminAuth"],function(){
 // });
 
 Route::post('store-movie',[MoviesController::class,'store']);
+Route::post('update-movie/{id}',[MoviesController::class,'update']);
 

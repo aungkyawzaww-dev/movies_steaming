@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->foreignId('movie_id')->constrained()->onDelete('cascade');
-            $table->bigInteger("view_count");
+            $table->bigInteger("view_count")->default(0);
             $table->timestamps();
         });
     }
