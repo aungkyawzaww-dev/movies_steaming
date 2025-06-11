@@ -16,11 +16,11 @@ return new class extends Migration
             // သူနဲ့ပတ်သတ်ပြီးရှာဖွေမူတွေများကြီးလုပ်နိုင်အောင် index ကိုထည့် 
             $table->string("slug")->index();
             $table->string("name")->index();
+            $table->string("release_date");
             $table->string("image");
             $table->longtext("description");
-            $table->string("embed_link");
             $table->double("rating");
-            $table->bigInteger("view_count");
+            $table->bigInteger("view_count")->default(0);
             $table->timestamps();
         });
 
@@ -28,7 +28,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger("serie_id")->index();
             $table->unsignedBigInteger("category_id")->index();
-            $table->bigInteger("view_count");
+            $table->bigInteger("view_count")->default(0);
             $table->timestamps();
         });
     }

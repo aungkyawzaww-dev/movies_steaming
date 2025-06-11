@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://demos.creative-tim.com/argon-design-system/assets/css/nucleo-icons.css">
         <link rel="stylesheet" href="https://demos.creative-tim.com/argon-design-system/assets/css/nucleo-svg.css">
         <!-- Argon CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="{{asset('a_assets/argon/argon.min.css')}}" type="text/css">
         <!-- mm font -->

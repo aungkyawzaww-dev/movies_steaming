@@ -1,10 +1,34 @@
 <ul class="navbar-nav">
     <li class="nav-item">
         <a class="nav-link active" href="#">
-            <i class="ni ni-atom text-warning"></i>
-            <span class="nav-link-text">Gem</span>
+            <i class="fa-solid fa-chart-pie text-warning"></i>
+            <span class="nav-link-text">Dashboard</span>
         </a>
     </li>
+
+    <li class="nav-item">
+        <a class="nav-link active" href={{ route("category.index") }}>
+            <i class="fa-solid fa-list-check text-warning"></i>
+            <span class="nav-link-text">Category</span>
+        </a>
+    </li>
+
+
+    <li class="nav-item">
+        <a class="nav-link active" href="{{ route("movie.index") }}">
+            <i class="fa-solid fa-clapperboard text-warning"></i>
+            <span class="nav-link-text">Movies</span>
+        </a>
+    </li>
+
+
+    <li class="nav-item">
+        <a class="nav-link active" href="{{route('series.index')}}">
+            <i class="fa-solid fa-tv text-warning"></i>
+            <span class="nav-link-text">Series</span>
+        </a>
+    </li>
+
 
     <li class="nav-item ">
         <a class="nav-link active" href="#homeData" data-toggle="collapse" role="button"

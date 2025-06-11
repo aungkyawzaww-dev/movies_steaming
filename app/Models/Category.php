@@ -16,4 +16,8 @@ class Category extends Model
     public function movies() {
         return $this->belongsToMany(Movie::class);
     }
+
+    public function seriesFun() {
+        return $this->belongsToMany(Serie::class,'category_series');
+    }
 }

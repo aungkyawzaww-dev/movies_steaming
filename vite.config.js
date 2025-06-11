@@ -24,6 +24,8 @@ export default defineConfig({
                 'resources/js/Test.jsx',
                 'resources/js/Movie/CreateMovie.jsx',
                 'resources/js/Movie/EditMovie.jsx',
+                'resources/js/Serie/CreateSerie.jsx',
+                'resources/js/Serie/EditSerie.jsx'
             ],
             refresh: true,
         }),
