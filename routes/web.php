@@ -7,11 +7,12 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MoviesController;
 use App\Http\Controllers\Admin\SerieEpisodesController;
 use App\Http\Controllers\Admin\SeriesController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Auth
 Route::get("admin/login",[AuthController::class,"showLogin"])->name("showlogin")->middleware("RedirectIfAdminAuth");
@@ -26,6 +27,9 @@ Route::group(["middleware" => "RedirectIfNotAdminAuth"],function(){
     Route::resource("admin/series-epi",SerieEpisodesController::class);
     Route::resource("admin/ads",AdsController::class);
 });
+
+// User
+Route::get('/',[HomeController::class,'index'])->name("home");
 
 
 

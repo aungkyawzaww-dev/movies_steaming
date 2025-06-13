@@ -1,0 +1,124 @@
+:root {
+  --yellow-color: #fdb60e;
+}
+body {
+  font-family: "Source Sans 3", serif;
+  font-size: 16px;
+  background: #141318;
+  font-weight: 300;
+}
+/* mobile menu */
+.mobile-topbar .menu-icon {
+  font-size: 30px;
+}
+/* mobile sidebar */
+.mobile-sidebar {
+  height: 100vh;
+  width: 75%;
+  left: -75%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000000;
+  transition: left 0.2s ease-in-out;
+}
+.show-sidebar {
+  left: 0;
+}
+.mobile-sidebar .close-icon {
+  font-size: 25px;
+}
+
+.mobile-sidebar .menus .menu-item {
+  border-radius: 10px;
+}
+
+.mobile-sidebar .menus .menu-item .menu-icon {
+  font-size: 13px;
+}
+
+.mobile-sidebar .menus .menu-item a {
+  color: rgba(140, 140, 140, 0.811);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+/* customize */
+.btn {
+  border-radius: 10px;
+  padding: 7px 10px;
+}
+.btn-outline-yellow {
+  color: var(--yellow-color);
+  border: 1px solid var(--yellow-color);
+  font-weight: 200;
+}
+.btn-yellow {
+  background-color: var(--yellow-color);
+  color: #191c1f;
+}
+.text-yellow {
+  color: var(--yellow-color);
+}
+
+/* navbar custom */
+.nav-account .dropdown-menu {
+  transform: translate3d(-110px, 37px, 0px) !important;
+}
+
+/* hero header */
+.hero-header {
+  height: 400px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9)),
+    url(https://media.themoviedb.org/t/p/w1000_and_h563_face/axzDt19aBOsKAoWOypQxpzKR0Rs.jpg);
+  background-size: cover;
+  background-position: center;
+}
+/* movie card */
+.movie-card-container {
+  border-radius: 15px;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+}
+
+.movie-card-container .play-icon {
+  width: 50px;
+  height: 50px;
+  border: 30px solid #212529;
+  box-shadow: 0px 0px 50px yellowgreen;
+}
+.movie-card-container .play-icon {
+  font-size: 40px;
+}
+
+.movie-card-container:hover .play-icon {
+  box-shadow: 0px 0px 30px white;
+  border: 5px solid var(--yellow-color);
+}
+
+.movie-card-container .rating {
+  top: 10px;
+  left: 10px;
+  width: 40px;
+  height: 40px;
+  border: 2px solid yellowgreen;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* movie detail */
+.movie-detail .action-icon {
+  font-size: 20px;
+}
+.movie-detail .nav-tabs {
+  border-bottom: 0 !important;
+}
+.movie-detail .nav-tabs {
+  font-weight: 400;
+}
+.movie-detail .nav-tabs .active {
+  border-bottom: 1px solid var(--yellow-color);
+  color: var(--yellow-color);
+  padding-bottom: 7px;
+}
+.movie-detail .comment img {
+  width: 50px;
+}
