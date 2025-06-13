@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdsController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -23,6 +24,7 @@ Route::group(["middleware" => "RedirectIfNotAdminAuth"],function(){
     Route::resource("admin/movie",MoviesController::class);
     Route::resource("admin/series",SeriesController::class);
     Route::resource("admin/series-epi",SerieEpisodesController::class);
+    Route::resource("admin/ads",AdsController::class);
 });
 
 

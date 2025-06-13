@@ -220,6 +220,8 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+        {{-- ads --}}
+        <script type='text/javascript' src='//pl26902910.profitableratecpm.com/22/58/e9/2258e903d7d5f5a3ed474c18c941beb1.js'></script>
 
         {{-- validation error --}}
         @if($errors->any())

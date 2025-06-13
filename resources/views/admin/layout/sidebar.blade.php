@@ -29,6 +29,13 @@
         </a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link active" href="{{route('ads.index')}}">
+            <i class="fa-solid fa-tv text-warning"></i>
+            <span class="nav-link-text">ADS Management</span>
+        </a>
+    </li>
+
 
     <li class="nav-item ">
         <a class="nav-link active" href="#homeData" data-toggle="collapse" role="button"

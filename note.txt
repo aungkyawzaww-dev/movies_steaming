@@ -36,3 +36,5 @@ https://codepen.io/sampotts/pen/jARJYp
 
 => https://react-select.com/
 
+=> https://adsterra.com/ (for ads)
+
