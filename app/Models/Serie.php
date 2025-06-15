@@ -16,6 +16,12 @@ class Serie extends Model
         "view_count",
     ];
 
+    // ဒသမ တစ်နေရာပဲယူမယ် 
+    protected $appends = ["rating_no"];
+    protected function getRatingNoAttribute(){
+        return number_format($this->rating,1); // ဒသမ တစ်နေရာပဲယူမယ် 
+    }
+
     public function categoryFun(){
         return $this->belongsToMany(Category::class,'category_series');
     }

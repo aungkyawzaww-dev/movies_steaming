@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     {{-- custom css --}}
     <link rel="stylesheet" href="{{ asset('/assets/css/style.css')}}">
+
+    {{-- toastr  --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
 </head>
 
 <body class="position-relative">
@@ -90,10 +94,10 @@
         </h3>
         {{-- menu --}}
         <div class="d-flex align-items-center">
-            <a href="" class="ml-4 text-white">Home</a>
-            <a href="" class="ml-4 text-white">Movies</a>
-            <a href="" class="ml-4 text-white">TV Series </a>
-            <a href="" class="ml-4 text-white">Subscribption </a>
+            <a href="{{url('/')}}" class="ml-4 text-white">Home</a>
+            <a href="{{url('/movie')}}" class="ml-4 text-white">Movies</a>
+            <a href="{{url('/serie')}}" class="ml-4 text-white">TV Series </a>
+            <a href="{{url('/sub')}}" class="ml-4 text-white">Subscribption </a>
 
             <div class="dropdown ml-4">
                 <span class="text-white" type="button" id="mainMenu" data-toggle="dropdown" aria-haspopup="true"
@@ -101,9 +105,9 @@
                     Category
                 </span>
                 <div class="dropdown-menu" aria-labelledby="mainMenu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Scifi</a>
-                    <a class="dropdown-item" href="#">Horror</a>
+                    @foreach($shareCategroies as $shareCategory)
+                        <a class="dropdown-item" href="{{ url('/movie?category='.$shareCategory->slug) }}">{{$shareCategory->name}}</a>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -115,9 +119,18 @@
                     Account
                 </span>
                 <div class="dropdown-menu" aria-labelledby="mainMenu">
-                    <a class="dropdown-item" href="#">Login</a>
-                    <a class="dropdown-item" href="#">Create Account</a>
-                    <a class="dropdown-item" href="#">User One</a>
+                    {{-- if you are not login --}}
+                    @guest
+                        <a class="dropdown-item" href="{{url('/login')}}">Login</a>
+                        <a class="dropdown-item" href="{{url('/register')}}">Create Account</a>
+                    @endguest
+                    
+                    {{-- if you are login --}}
+                    @auth
+                        <a class="dropdown-item" href="javascript:void(0);">{{Auth::user()->name}}</a>
+                        <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
+                    @endauth
+                   
                 </div>
             </div>
         </div>
@@ -153,15 +166,11 @@
     @yield('content')
 
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
-        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 
     <script>
         const showSidebar = () => {
@@ -171,6 +180,27 @@
             $('.mobile-sidebar').removeClass('show-sidebar');
         }
     </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    {{-- validation error --}}
+    @if($errors->any())
+        @foreach($errors->all() as $err)
+            <script>
+                toastr.warning('{{$err}}');
+            </script>
+        @endforeach 
+    @endif
+
+    {{-- section message  --}}
+    @if(session('success'))
+        <script>
+            toastr.success('{{session('success')}}');
+        </script>
+    @endif
+
+    @yield('js');
+
 </body>
 
 </html>
