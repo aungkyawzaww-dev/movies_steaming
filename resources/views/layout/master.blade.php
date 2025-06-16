@@ -128,6 +128,7 @@
                     {{-- if you are login --}}
                     @auth
                         <a class="dropdown-item" href="javascript:void(0);">{{Auth::user()->name}}</a>
+                        <a class="dropdown-item" href="{{url('/dashboard')}}">DashBoard</a>
                         <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
                     @endauth
                    
@@ -196,6 +197,13 @@
     @if(session('success'))
         <script>
             toastr.success('{{session('success')}}');
+        </script>
+    @endif
+
+    {{-- section message  --}}
+    @if(session('error'))
+        <script>
+            toastr.warning('{{session('error')}}');
         </script>
     @endif
 

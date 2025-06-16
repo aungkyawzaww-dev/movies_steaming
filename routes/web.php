@@ -32,13 +32,24 @@ Route::group(["middleware" => "RedirectIfNotAdminAuth"],function(){
 
 
 // User
-Route::get('/',[HomeController::class,'index'])->name("home");
 
-Route::get('/register',[UserAuthController::class,'showRegister']);
-Route::post('/register',[UserAuthController::class,'register']);
-Route::get('/login',[UserAuthController::class,'showLogin']);
-Route::post('/login',[UserAuthController::class,'login']);
-Route::get('/logout',[UserAuthController::class,'logout'])->name('logout');
+Route::group([],function(){
+    Route::get('/',[HomeController::class,'index'])->name("home");
+
+    Route::group(["middleware" => "RedirectIfAuth"],function(){
+        Route::get('/register',[UserAuthController::class,'showRegister']);
+        Route::post('/register',[UserAuthController::class,'register']);
+        Route::get('/login',[UserAuthController::class,'showLogin']);
+        Route::post('/login',[UserAuthController::class,'login']);
+    });
+
+    
+    Route::group(["middleware" => "RedirectIfNotAuth"],function(){
+        Route::get('/logout',[UserAuthController::class,'logout'])->name('logout');
+    });
+
+});
+
 
 
 // movie

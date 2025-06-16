@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Middleware\RedirectIfAdminAuth;
+use App\Http\Middleware\RedirectIfAuth;
 use App\Http\Middleware\RedirectIfNotAdminAuth;
+use App\Http\Middleware\RedirectIfNotAuth;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -16,7 +18,9 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             "RedirectIfAdminAuth" => RedirectIfAdminAuth::class,
-            "RedirectIfNotAdminAuth" => RedirectIfNotAdminAuth::class
+            "RedirectIfNotAdminAuth" => RedirectIfNotAdminAuth::class,
+            "RedirectIfAuth" => RedirectIfAuth::class,
+            "RedirectIfNotAuth" => RedirectIfNotAuth::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

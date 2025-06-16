@@ -22,44 +22,52 @@ class UserAuthController extends Controller
             "password"=>"required"
         ]);
 
-        // check email already exits
-        // check password
-        // store to database
-
         $user = User::create([
             "name" => $request->name,
             "email" => $request->email,
             "password" => bcrypt($request->password)
         ]);
+
+        // auth()->login($user);
         $user->save();
 
-        return redirect()->back()->with("success","Account created successfully");
-        // login
+        return redirect('/')->with("success","Welcome".$user->name);
     }
 
     public function login(Request $request){
-        $validator = Validator::make($request->all(),[
+        
+    // method 1
+        // $validator = Validator::make($request->all(),[
+        //     "email"=>"required|email",
+        //     "password"=>"required"
+        // ]);
+
+        // if(Auth::attempt($validator->validated())){
+        //     return redirect("/")->with("success","login success");
+        // }
+
+        // return redirect()->back()->with("err","Wrong email or password");
+
+    // method 2
+        $request->validate([
             "email"=>"required|email",
             "password"=>"required"
         ]);
 
-        // $user = User::where("email", $request->email)->first();
-        // if($user){
-        //     if(Auth::attempt($validator->validated())){
-        //         return redirect("/");
-        //     }
-        // }
+        $cre = $request->only('email','password');
+        $attempt = Auth::attempt($cre);
 
-        if(Auth::attempt($validator->validated())){
-            return redirect("/")->with("success","Successfully login");
+        if(!$attempt){
+            return redirect()->back()->with("error","Wrong email or password");;
         }
 
-        return redirect()->back();
+        return redirect("/")->with("success","Welcome ".Auth::user()->name);
+
     }
 
     public function logout(){
         Auth::logout();
-        return redirect("/")->with("success","Successfully logout");
+        return redirect("/login")->with("success","logout success");
     }
 
     public function showLogin(){
