@@ -207,7 +207,7 @@
         </script>
     @endif
 
-    @yield('js');
+    @yield('js')
 
 </body>
 

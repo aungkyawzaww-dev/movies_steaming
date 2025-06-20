@@ -2,7 +2,8 @@
   --yellow-color: #fdb60e;
 }
 body {
-  font-family: "Source Sans 3", serif;
+  /* font-family: "Source Sans 3", serif; */
+  font-family: sans-serif;
   font-size: 16px;
   background: #141318;
   font-weight: 300;

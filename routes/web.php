@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\MoviesController;
 use App\Http\Controllers\Admin\SerieEpisodesController;
 use App\Http\Controllers\Admin\SeriesController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MovieController;
+use App\Http\Controllers\SerieController;
 use App\Http\Controllers\UserAuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +37,10 @@ Route::group(["middleware" => "RedirectIfNotAdminAuth"],function(){
 
 Route::group([],function(){
     Route::get('/',[HomeController::class,'index'])->name("home");
+    Route::get('/movie',[MovieController::class,'all']);
+    Route::get('/movie/{slug}',[MovieController::class,'detail']);
+    Route::get('/serie',[SerieController::class,'all']);
+    Route::get('/serie/{slug}',[SerieController::class,'detail']);
 
     Route::group(["middleware" => "RedirectIfAuth"],function(){
         Route::get('/register',[UserAuthController::class,'showRegister']);
