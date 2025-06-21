@@ -52,12 +52,12 @@
                 <div class="card-body p-0 m-0 p-3">
                     <h6 class="text-secondary p-0 m-0 mb-2">By Rating</h6>
                     <div class="mt-3">
-                        <div class="btn btn-outline-primary">
-                            5 > rating
+                        <div class="btn btn-outline-primary">                           
+                            <a href="{{url('/movie?is_search=y&rating=abovefive')}}">5 &gt; rating</a>
                         </div>
 
                         <div class="btn btn-outline-primary">
-                            5 &lt; rating
+                            <a href="{{url('/movie?is_search=y&rating=belowfive')}}">5 &lt; rating</a>
                         </div>
                     </div>
                 </div>
@@ -91,6 +91,7 @@
 
             </div>
         </div>
+        
     </div>
 
 

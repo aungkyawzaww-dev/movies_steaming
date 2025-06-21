@@ -30,13 +30,23 @@ class MovieController extends Controller
         }
 
         // by rating
+        if($rating = $request->rating){
+            if($rating == "belowfive"){
+                $data->where('rating','<',5);
+            }
+            if($rating == "abovefive"){
+                $data->where('rating','>',5);
+            }
+        }
 
 
         $latest_movies = $data->paginate(12);
         return view('movie.all',compact('latest_movies'));
     }
 
-    public function detail(){
+    public function detail($slug){
+
+        return view('movie.detail');
 
     }
 }
