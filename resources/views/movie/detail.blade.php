@@ -6,8 +6,9 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid px-5 mt-4 movie-detail">
-        <div class="row">
+    <div class="container-fluid px-5 mt-4 movie-detail" id="movieDetail">
+
+        {{-- <div class="row">
             <div class="col-12">
                 <h2 class="text-white">Out of My Mind (2024)</h2>
             </div>
@@ -73,9 +74,11 @@
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <span class="active" id="nav-home-tab" data-toggle="tab" data-target="#nav-home"
                                 type="button" role="tab" aria-controls="nav-home" aria-selected="true">Comments &
-                                Reviews</span>
+                                Reviews
+                            </span>
                             <span class="ml-4" id="nav-profile-tab" data-toggle="tab" data-target="#nav-profile"
-                                type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Photos</span>
+                                type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Photos
+                            </span>
 
                         </div>
                     </nav>
@@ -221,15 +224,28 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
+        
     </div>
 
 @endsection
 
 @section('js')
+
+    {{-- save တာနဲ့အမြဲအလုပ်လုပ်နေမယ် --}}
+    @viteReactRefresh
+    @vite('resources/js/Web/Movie.jsx')
+
     <!-- plyr -->
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
     <script>
-        const moviePlayer = new Plyr('#moviePlayer');
+        
+        $(document).ready(function(){
+            const moviePlayer = new Plyr('#moviePlayer');
+        });
+
+        // const moviePlayer = new Plyr('#moviePlayer');
+
     </script>
+
 @endsection

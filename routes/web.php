@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-// Auth
+// Auth => Admin
 Route::get("admin/login",[AuthController::class,"showLogin"])->name("showlogin")->middleware("RedirectIfAdminAuth");
 Route::post("admin/login",[AuthController::class,"login"])->name("login");
 

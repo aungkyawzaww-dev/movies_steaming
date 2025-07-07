@@ -25,7 +25,9 @@ export default defineConfig({
                 'resources/js/Movie/CreateMovie.jsx',
                 'resources/js/Movie/EditMovie.jsx',
                 'resources/js/Serie/CreateSerie.jsx',
-                'resources/js/Serie/EditSerie.jsx'
+                'resources/js/Serie/EditSerie.jsx',
+                //for website component
+                'resources/js/Web/Movie.jsx'
             ],
             refresh: true,
         }),
